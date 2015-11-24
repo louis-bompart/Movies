@@ -1,5 +1,6 @@
 package org.esilv.ibo.movies.model;
 
+
 /**
  * Movies
  * Created by louis on 24/11/2015.
@@ -13,5 +14,8 @@ public class Main {
             f.AddFilm();
         }
         f.ReadList();
+
+        f.SaveList();
     }
 }
+

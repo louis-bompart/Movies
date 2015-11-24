@@ -3,6 +3,12 @@ package org.esilv.ibo.movies.view;/**
  */
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
+import javafx.stage.Stage;
+
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -28,10 +34,20 @@ public class home extends Application {
                 System.out.println("Hello World!");
             }
         });
+        ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Grapefruit", 13),
+                        new PieChart.Data("Oranges", 25),
+                        new PieChart.Data("Plums", 10),
+                        new PieChart.Data("Pears", 22),
+                        new PieChart.Data("Apples", 30));
+        final PieChart chart = new PieChart(pieChartData);
 
         StackPane root = new StackPane();
         root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 850, 500));
+        root.getChildren().add(chart);
+        primaryStage.setScene(new Scene(root, 1000, 750));
+
         primaryStage.show();
 
         //Delete button
@@ -47,4 +63,6 @@ public class home extends Application {
         //root.getChildren().add(btn);
 
     }
+
+
 }

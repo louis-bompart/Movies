@@ -1,6 +1,12 @@
 package org.esilv.ibo.movies.model;
 
-import java.lang.String;import java.lang.System;import java.util.ArrayList;import java.util.List;import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.lang.String;
+import java.lang.System;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Maxime on 24/11/2015.
@@ -33,6 +39,23 @@ public class Filmotheque {
         for (Film listFilm : listFilms) {
             System.out.println("listFilm = " + listFilm);
         }
+    }
+
+    public void SaveList()
+    {
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter("SaveFilms.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            //TODO : Gerer proprepment l'exception
+        }
+
+        for (Film listFilm : listFilms) {
+            writer.println(listFilm);
+        }
+
+        writer.close();
     }
 
 
