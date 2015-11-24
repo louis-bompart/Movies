@@ -3,17 +3,10 @@ package org.esilv.ibo.movies.view;/**
  */
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.chart.PieChart;
-import javafx.stage.Stage;
-
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class home extends Application {
@@ -23,46 +16,31 @@ public class home extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        deleteConfirm = new DeleteConfirm();
-        primaryStage.setTitle("Hello World!");
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
 
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        ObservableList<PieChart.Data> pieChartData =
-                FXCollections.observableArrayList(
-                        new PieChart.Data("Grapefruit", 13),
-                        new PieChart.Data("Oranges", 25),
-                        new PieChart.Data("Plums", 10),
-                        new PieChart.Data("Pears", 22),
-                        new PieChart.Data("Apples", 30));
-        final PieChart chart = new PieChart(pieChartData);
+  public void start(Stage primaryStage) {
+    primaryStage.setTitle("BorderPane Test");
+    BorderPane bp = new BorderPane();
+    bp.setPadding(new Insets(10, 20, 10, 20));
 
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        root.getChildren().add(chart);
-        primaryStage.setScene(new Scene(root, 1000, 750));
+    Button btnTop = new Button("Top");
+    bp.setTop(btnTop);
 
-        primaryStage.show();
+    Button btnLeft = new Button("Left");
+    bp.setLeft(btnLeft);
 
-        //Delete button
-        Button deleteButton = new Button();
-        deleteButton.setText("Delete");
-        deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+    Button btnCenter = new Button("Center");
+    bp.setCenter(btnCenter);
 
-            public void handle(ActionEvent event) {
-                deleteConfirm.doDelete();
-            }
-        });
-        //Mind placing the button at its rightfull place
-        //root.getChildren().add(btn);
+    Button btnRight = new Button("Right");
+    bp.setRight(btnRight);
 
-    }
+    Button btnBottom = new Button("Bottom");
+    bp.setBottom(btnBottom);
+
+    Scene scene = new Scene(bp, 300, 200);
+    primaryStage.setScene(scene);
+    primaryStage.show();
+  }
 
 
 }
