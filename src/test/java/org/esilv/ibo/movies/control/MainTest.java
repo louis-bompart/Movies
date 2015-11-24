@@ -6,6 +6,10 @@ import static org.junit.Assert.*;
  * Movies
  * Created by louis on 24/11/2015.
  */
-public class MainTest {
-
+public class MainTest
+{
+    public static void main()
+    {
+        System.out.println("Hello World");
+    }
 }
