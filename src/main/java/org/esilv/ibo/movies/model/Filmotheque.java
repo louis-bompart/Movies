@@ -45,7 +45,7 @@ public class Filmotheque {
     {
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter("SaveFilms.txt");
+            writer = new PrintWriter("SaveFilms.csv");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             //TODO : Gerer proprepment l'exception

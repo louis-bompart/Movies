@@ -31,9 +31,6 @@ public class Film {
 
     @Override
     public String toString() {
-        return "Film { " +
-                "title = " + title +
-                ", category = " + category +
-                '}';
+        return title + ";" + category;
     }
 }
