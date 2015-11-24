@@ -1,5 +1,4 @@
 package org.esilv.ibo.movies.view;
-
 /**
  * Movies
  * Created by louis on 24/11/2015.

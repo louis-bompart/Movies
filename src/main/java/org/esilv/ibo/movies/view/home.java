@@ -3,37 +3,44 @@ package org.esilv.ibo.movies.view;/**
  */
 
 import javafx.application.Application;
-import javafx.stage.Stage;
-
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class home extends Application {
+    DeleteConfirm deleteConfirm;
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Hello World!");
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
 
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
+  public void start(Stage primaryStage) {
+    primaryStage.setTitle("BorderPane Test");
+    BorderPane bp = new BorderPane();
+    bp.setPadding(new Insets(10, 20, 10, 20));
 
-        StackPane root = new StackPane();
-        root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 850, 500));
-        primaryStage.show();
-    }
+    Button btnTop = new Button("Top");
+    bp.setTop(btnTop);
+
+    Button btnLeft = new Button("Left");
+    bp.setLeft(btnLeft);
+
+    Button btnCenter = new Button("Center");
+    bp.setCenter(btnCenter);
+
+    Button btnRight = new Button("Right");
+    bp.setRight(btnRight);
+
+    Button btnBottom = new Button("Bottom");
+    bp.setBottom(btnBottom);
+
+    Scene scene = new Scene(bp, 300, 200);
+    primaryStage.setScene(scene);
+    primaryStage.show();
+  }
+
+
 }

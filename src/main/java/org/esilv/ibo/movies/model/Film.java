@@ -1,6 +1,9 @@
 package org.esilv.ibo.movies.model;
 
-import java.lang.Override;import java.lang.String;public class Film {
+import java.lang.Override;
+import java.lang.String;
+
+public class Film {
 
     String title;
     String category;
@@ -28,9 +31,6 @@ import java.lang.Override;import java.lang.String;public class Film {
 
     @Override
     public String toString() {
-        return "Film { " +
-                "title = " + title +
-                ", category = " + category +
-                '}';
+        return title + ";" + category;
     }
 }
