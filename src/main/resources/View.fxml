@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+      fx:controller="org.esilv.ibo.movies.control.Controller">
+    <HBox>
+        <children>
+            <Separator orientation="VERTICAL" prefHeight="189.0" prefWidth="62.0"/>
+            <Label fx:id="labelone" prefHeight="164.0" prefWidth="120.0" text="Label"/>
+            <Separator orientation="VERTICAL" prefHeight="183.0" prefWidth="121.0"/>
+            <PieChart fx:id="pieChartOne" legendSide="RIGHT" prefHeight="150.0" prefWidth="192.0"
+                      title="PieChar date..."/>
+            <Separator orientation="VERTICAL" prefHeight="183.0" prefWidth="49.0"/>
+        </children>
+    </HBox>
+    <TableView fx:id="tableOne" prefHeight="200.0" prefWidth="200.0 " tableMenuButtonVisible="true">
+        <columns>
+            <TableColumn prefWidth="300.0" text="Title"/>
+            <TableColumn prefWidth="100.0" text="size"/>
+
+        </columns>
+    </TableView>
+    <HBox>
+        <Separator prefHeight="1.0" prefWidth="60.0"/>
+        <Button fx:id="buttonPlus" mnemonicParsing="false" onAction="#handlePlus" prefHeight="23.0"
+                prefWidth="190.0" text="+"/>
+        <Separator prefHeight="2.0" prefWidth="53.0"/>
+        <Button fx:id="buttonMinus" mnemonicParsing="false" onAction="#handleMinus" prefHeight="23.0"
+                prefWidth="168.0" text="-">
+            <HBox.margin>
+                <Insets/>
+            </HBox.margin>
+        </Button>
+        <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0"/>
+    </HBox>
+</VBox>

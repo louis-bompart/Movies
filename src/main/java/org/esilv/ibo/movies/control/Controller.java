@@ -1,4 +1,4 @@
-package org.esilv.ibo.movies.view;
+package org.esilv.ibo.movies.control;
 
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
@@ -24,7 +24,7 @@ public class Controller {
 
 
     // Reference to the main application.
-    private Main mainApp;
+    private org.esilv.ibo.movies.view.Main mainApp;
 
     /**
      * The constructor.
@@ -67,7 +67,7 @@ public class Controller {
      *
      * @param mainApp
      */
-    public void setMainApp(Main mainApp) {
+    public void setMainApp(org.esilv.ibo.movies.view.Main mainApp) {
         this.mainApp = mainApp;
 
 
