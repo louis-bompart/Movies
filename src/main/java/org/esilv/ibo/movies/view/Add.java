@@ -28,7 +28,7 @@ public class Add extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage)
+    public void start(final Stage primaryStage)
     {
         primaryStage.setTitle("Add a movie");
 
@@ -62,6 +62,7 @@ public class Add extends Application {
             public void handle(ActionEvent event) {
                 //TODO Add controller function to handle the button.
                 control.addMovie(movieTextField.getText(),movieLabel.getText());
+                primaryStage.close();
             }
         });
         grid.add(btn, 1, 3);
