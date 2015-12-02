@@ -17,7 +17,8 @@ public class AlertTemplate extends Alert {
 
     private String[] strings;
 
-    public AlertTemplate(String[] strings) {
+    public AlertTemplate(String[] strings)
+    {
         super(AlertType.CONFIRMATION);
         this.strings = strings;
     }

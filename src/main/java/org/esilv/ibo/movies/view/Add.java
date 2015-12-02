@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.esilv.ibo.movies.control.Control;
+import org.esilv.ibo.movies.model.Movies;
 
 public class Add extends Application {
 
@@ -50,7 +51,7 @@ public class Add extends Application {
         grid.add(movieTextField, 1, 0);
 
         //Category
-        Label categoryLabel = new Label("Category :");
+        final Label categoryLabel = new Label("Category :");
         grid.add(categoryLabel, 0, 1);
         final TextField categoryTextField = new TextField();
         grid.add(categoryTextField, 1, 1);
@@ -61,7 +62,7 @@ public class Add extends Application {
         btn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 //TODO Add controller function to handle the button.
-                control.addMovie(movieTextField.getText(),movieLabel.getText());
+                control.addMovie(movieTextField.getText(), categoryTextField.getText());
                 primaryStage.close();
             }
         });
