@@ -9,7 +9,6 @@ public class Movies {
     HashMap<Integer, Movie> hashMap;
 
     public Movies() {
-
     }
 
     public void AddMovie(Movie movie) {

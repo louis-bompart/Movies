@@ -4,6 +4,8 @@ package org.esilv.ibo.movies.view;
  */
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -38,18 +40,24 @@ public class Add extends Application {
         //Movie
         Label movieLabel = new Label("Movie :");
         grid.add(movieLabel, 0, 0);
-        TextField movieTextField = new TextField();
+        final TextField movieTextField = new TextField();
         grid.add(movieTextField, 1, 0);
 
         //Category
         Label categoryLabel = new Label("Category :");
         grid.add(categoryLabel, 0, 1);
-        TextField categoryTextField = new TextField();
+        final TextField categoryTextField = new TextField();
         grid.add(categoryTextField, 1, 1);
 
-        //button
+        //Button
         Button btn = new Button();
         btn.setText("Add");
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                //TODO Add controller function to handle the button.
+                //functionToAdd(movieTextField.getText(),categoryTextField.getText());
+            }
+        });
         grid.add(btn, 1, 3);
 
         primaryStage.show();
