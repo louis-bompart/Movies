@@ -1,5 +1,6 @@
 package org.esilv.ibo.movies.model;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 /**
@@ -19,6 +20,7 @@ public class Movies {
         }
         hashMap.put(movie.hashCode(), movie);
         return true;
+
     }
 
     public boolean RmMovie(int hashcode) {
@@ -27,6 +29,11 @@ public class Movies {
             return false;
         }
         return true;
+    }
+
+    //A collection can be used easily with iterator (like in C++)
+    public Collection<Movie> getMovies() {
+        return hashMap.values();
     }
 }
 
