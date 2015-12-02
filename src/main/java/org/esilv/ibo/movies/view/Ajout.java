@@ -3,17 +3,13 @@ package org.esilv.ibo.movies.view;/**
  */
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Ajout extends Application {
@@ -38,8 +34,8 @@ public class Ajout extends Application {
         //Scene scene = new Scene(grid, 5, 5);
         primaryStage.setScene(new Scene(grid, 500, 250));
 
-        //Film
-        Label film = new Label("Film :");
+        //Movie
+        Label film = new Label("Movie :");
         grid.add(film, 0, 0);
         TextField filmm = new TextField();
         grid.add(filmm, 1, 0);
