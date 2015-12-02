@@ -1,6 +1,8 @@
 package org.esilv.ibo.movies.view;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,32 +10,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.esilv.ibo.movies.control.Control;
 
-public class Main extends Application {
 
-    public static void main(String[] args) {
-        Application.launch(Main.class, args);
+import javafx.scene.control.*;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args)
+    {
+        System.out.println("Hello World");
     }
-
-    private static Control control;
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("View.fxml"));
-        primaryStage.setTitle("Group one");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-        control = new Control();
-    }
-
-    @FXML
-    private void handlePlus() {
-        Stage stage = new Stage();
-        Add add = new Add(control);
-        add.start(stage);
-    }
-    @FXML
-    private void handleMinus() {
-
-    }
-
 }
