@@ -11,15 +11,21 @@ public class Movies {
     public Movies() {
     }
 
-    public void AddMovie(Movie movie) {
-        if (!hashMap.containsKey(movie.hashCode()))
-            hashMap.put(movie.hashCode(), movie);
+    public boolean AddMovie(Movie movie) {
+        if (hashMap.containsKey(movie.hashCode()))
+        {
+            return false;
+        }
+        hashMap.put(movie.hashCode(), movie);
+        return true;
     }
 
-    public void RmMovie(int hashcode) {
-        if (hashMap.containsKey(hashcode)) {
+    public boolean RmMovie(int hashcode) {
+        if (!hashMap.containsKey(hashcode)) {
             hashMap.remove(hashcode);
+            return false;
         }
+        return true;
     }
 }
 
