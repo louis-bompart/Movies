@@ -8,6 +8,7 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
       fx:controller="org.esilv.ibo.movies.control.Controller">
+
     <HBox>
         <children>
             <Separator orientation="VERTICAL" prefHeight="189.0" prefWidth="62.0"/>
@@ -18,13 +19,16 @@
             <Separator orientation="VERTICAL" prefHeight="183.0" prefWidth="49.0"/>
         </children>
     </HBox>
-    <TableView fx:id="tableOne" prefHeight="200.0" prefWidth="200.0 " tableMenuButtonVisible="true">
-        <columns>
-            <TableColumn prefWidth="300.0" text="Title"/>
-            <TableColumn prefWidth="100.0" text="size"/>
 
-        </columns>
-    </TableView>
+
+        <TableView fx:id="tableOne"  prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true">
+            <columns>
+                <TableColumn prefWidth="300.0" text="Title"/>
+                <TableColumn prefWidth="300.0" text="kind"/>
+            </columns>
+        </TableView>
+
+
     <HBox>
         <Separator prefHeight="1.0" prefWidth="60.0"/>
         <Button fx:id="buttonPlus" mnemonicParsing="false" onAction="#handlePlus" prefHeight="23.0"
