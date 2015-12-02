@@ -9,6 +9,8 @@ import org.esilv.ibo.movies.view.Add;
 import org.esilv.ibo.movies.view.AlertTemplate;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,6 +22,7 @@ import java.util.List;
 public class Control {
 
     private Movies movies;
+
     public Control()
     {
         movies = new Movies();
@@ -35,6 +38,7 @@ public class Control {
             String[] alert = {"Success","Your movie has been added"};
             AlertTemplate alertTemplate = new AlertTemplate(alert);
             alertTemplate.showAlert();
+            WriteCSV();
         }
         else
         {
@@ -81,6 +85,39 @@ public class Control {
         }
         return movieList;
     }
+
+    public void WriteCSV()
+    {
+        String path = "C:\\Users\\Raihan\\Desktop\\movies.csv";  //path store
+
+        try
+        {
+            FileWriter writer;  //Function to write
+
+            writer = new FileWriter(path, true);  //take path
+
+            List<Movie> mov = getMovies();
+
+            for(Movie m : mov) //foreach
+            {
+                writer.write(m.getTitle().toString());
+                writer.write(";"); //CSV separator
+                writer.write(m.getCategory().toString());
+                writer.write("\r\n");
+            }
+
+            System.out.println("Write success!");
+
+            writer.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
 }
 
