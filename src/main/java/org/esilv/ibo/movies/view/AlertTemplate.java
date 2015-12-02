@@ -22,7 +22,7 @@ public class AlertTemplate extends Alert {
         this.strings = strings;
     }
 
-    public boolean doDelete() {
+    public boolean showAlert() {
 
         setTitle("Title" + strings[0]);
         setContentText("Content" + strings[1]);

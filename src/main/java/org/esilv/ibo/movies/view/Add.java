@@ -14,12 +14,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.esilv.ibo.movies.control.Control;
 
 public class Add extends Application {
 
     public static void main(String[] args) {
         launch(args);
     }
+
 
     @Override
     public void start(Stage primaryStage)
@@ -55,7 +57,7 @@ public class Add extends Application {
         btn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 //TODO Add controller function to handle the button.
-                //functionToAdd(movieTextField.getText(),categoryTextField.getText());
+
             }
         });
         grid.add(btn, 1, 3);
