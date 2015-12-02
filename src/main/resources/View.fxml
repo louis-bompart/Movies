@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
       minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
-      fx:controller="org.esilv.ibo.movies.view.Main">
+      fx:controller="org.esilv.ibo.movies.control.Main">
     <HBox>
         <children>
             <Separator orientation="VERTICAL" prefHeight="189.0" prefWidth="62.0"/>

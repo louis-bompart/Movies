@@ -9,6 +9,9 @@ import org.esilv.ibo.movies.view.Add;
 import org.esilv.ibo.movies.view.AlertTemplate;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -59,7 +62,25 @@ public class Control {
         }
     }
 
-    
+    public List<String> getTitle()
+    {
+        List<String> str = new ArrayList<String>();
+        Collection<Movie> movieCollection = movies.getMovies();
+        for (Movie movie: movieCollection) {
+            str.add(movie.getTitle());
+        }
+        return str;
+    }
+
+    public List<Movie> getMovies()
+    {
+        List<Movie> movieList = new ArrayList<Movie>();
+        Collection<Movie> movieCollection = movies.getMovies();
+        for (Movie movie: movieCollection) {
+            movieList.add(movie);
+        }
+        return movieList;
+    }
 
 }
 
