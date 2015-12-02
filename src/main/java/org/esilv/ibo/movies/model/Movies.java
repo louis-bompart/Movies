@@ -9,6 +9,7 @@ public class Movies {
     HashMap<Integer, Movie> hashMap;
 
     public Movies() {
+        hashMap = new HashMap<Integer, Movie>();
     }
 
     public boolean AddMovie(Movie movie) {

@@ -21,7 +21,11 @@ public class Add extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
+    private Control control;
+    public Add(Control oControl)
+    {
+        control = oControl;
+    }
 
     @Override
     public void start(Stage primaryStage)
@@ -40,7 +44,7 @@ public class Add extends Application {
         primaryStage.setScene(new Scene(grid, 500, 250));
 
         //Movie
-        Label movieLabel = new Label("Movie :");
+        final Label movieLabel = new Label("Movie :");
         grid.add(movieLabel, 0, 0);
         final TextField movieTextField = new TextField();
         grid.add(movieTextField, 1, 0);
@@ -57,7 +61,7 @@ public class Add extends Application {
         btn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 //TODO Add controller function to handle the button.
-
+                control.addMovie(movieTextField.getText(),movieLabel.getText());
             }
         });
         grid.add(btn, 1, 3);

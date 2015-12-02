@@ -59,16 +59,6 @@ public class Control {
         }
     }
 
-    @FXML
-    private void handlePlus() {
-        Stage stage = new Stage();
-        Add add = new Add();
-        add.start(stage);
-    }
-    @FXML
-    private void handleMinus() {
-
-    }
 
 
 }

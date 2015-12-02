@@ -25,5 +25,15 @@ public class Main extends Application {
         control = new Control();
     }
 
+    @FXML
+    private void handlePlus() {
+        Stage stage = new Stage();
+        Add add = new Add(control);
+        add.start(stage);
+    }
+    @FXML
+    private void handleMinus() {
+
+    }
 
 }
