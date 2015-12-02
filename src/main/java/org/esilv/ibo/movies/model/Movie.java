@@ -1,12 +1,14 @@
 package org.esilv.ibo.movies.model;
 
-import java.lang.Override;
-import java.lang.String;
-
-public class Film {
+public class Movie {
 
     String title;
     String category;
+
+    public Movie(String title, String category) {
+        this.title = title;
+        this.category = category;
+    }
 
     public String getTitle() {
         return title;
@@ -22,15 +24,5 @@ public class Film {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public Film(String title, String category) {
-        this.title = title;
-        this.category = category;
-    }
-
-    @Override
-    public String toString() {
-        return title + ";" + category;
     }
 }
