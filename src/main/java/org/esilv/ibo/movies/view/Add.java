@@ -59,8 +59,10 @@ public class Add extends Application {
         //Button
         Button btn = new Button();
         btn.setText("Add");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
+        btn.setOnAction(new EventHandler<ActionEvent>()
+        {
+            public void handle(ActionEvent event)
+            {
                 //TODO Add controller function to handle the button.
                 control.addMovie(movieTextField.getText(), categoryTextField.getText());
                 primaryStage.close();

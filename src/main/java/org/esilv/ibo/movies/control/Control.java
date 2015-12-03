@@ -38,7 +38,7 @@ public class Control {
             String[] alert = {"Success","Your movie has been added"};
             AlertTemplate alertTemplate = new AlertTemplate(alert);
             alertTemplate.showAlert();
-            WriteCSV();
+            WriteCSV(); //WriteCSV method
         }
         else
         {
@@ -88,7 +88,7 @@ public class Control {
 
     public void WriteCSV()
     {
-        String path = "C:\\Users\\Raihan\\Desktop\\movies.csv";  //path store
+        String path = "movies.csv";  //path store
 
         try
         {

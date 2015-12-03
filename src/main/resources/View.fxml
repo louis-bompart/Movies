@@ -20,8 +20,8 @@
     </HBox>
     <TableView fx:id="tableOne" prefHeight="200.0" prefWidth="200.0 " tableMenuButtonVisible="true">
         <columns>
-            <TableColumn prefWidth="300.0" text="Title"/>
-            <TableColumn prefWidth="100.0" text="size"/>
+            <TableColumn fx:id="_title" prefWidth="350.0" text="Title"/>
+            <TableColumn fx:id="_kind" prefWidth="350.0" text="Kind"/>
 
         </columns>
     </TableView>

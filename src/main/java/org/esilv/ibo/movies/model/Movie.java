@@ -2,8 +2,8 @@ package org.esilv.ibo.movies.model;
 
 public class Movie {
 
-    String title;
-    String category;
+    private String title;
+    private String category;
 
     public Movie(String title, String category) {
         this.title = title;
