@@ -42,21 +42,20 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("View.fxml"));
         primaryStage.setTitle("Main Form");
         primaryStage.setScene(new Scene(root, 700, 475));
-        List<Movie> mov = new ArrayList<Movie>();
+
+        List<Movie> mov = new ArrayList<Movie>(); //movie LIST
         try
         {
             if(mov.size() != 0)
             {
-                _title.setCellValueFactory(new PropertyValueFactory<Movie, String>("title"));
-                _kind.setCellValueFactory(new PropertyValueFactory<Movie, String>("category"));
+                _title.setCellValueFactory(new PropertyValueFactory<Movie, String>("title")); //doesn't work
+                _kind.setCellValueFactory(new PropertyValueFactory<Movie, String>("category")); //doesn't work
             }
         }
         catch (Exception  e)
         {
             e.printStackTrace();
         }
-
-        //kind.setCellValueFactory(new PropertyValueFactory<Movie, String>("category"));
 
         primaryStage.show();
         control = new Control();
@@ -81,8 +80,6 @@ public class Main extends Application {
     @FXML
     private javafx.scene.control.TableColumn<Movie, String> _kind;
 
-    @FXML
-    private TableView tableOne;
 
 
 
