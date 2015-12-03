@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import org.esilv.ibo.movies.model.Movie;
 import org.esilv.ibo.movies.view.Add;
 import org.esilv.ibo.movies.view.DeleteConfirm;
+import org.junit.FixMethodOrder;
 
 import javax.swing.table.TableColumn;
 import javax.swing.text.html.ListView;
@@ -30,12 +31,21 @@ public class Main extends Application {
 
     private static Control control;
 
-    private final ObservableList<Movie> data = FXCollections.observableArrayList(new Movie("ok","ko"));
+
 
     public static void main(String[] args)
     {
         Application.launch(Main.class, args);
     }
+
+    private TableView<Movie> table = new TableView<Movie>();
+    private final ObservableList<Movie> data =
+            FXCollections.observableArrayList(
+                    new Movie("star wars","Fantastic"),
+                    new Movie("lotr","fantastic"),
+                    new Movie("007","action"),
+                    new Movie("albator","animation")
+            );
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -43,6 +53,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("View.fxml"));
         primaryStage.setTitle("Main Form");
         primaryStage.setScene(new Scene(root, 700, 475));
+        table.setEditable(true);
+
 
         List<Movie> mov = new ArrayList<Movie>(); //movie LIST
         try
@@ -76,6 +88,11 @@ public class Main extends Application {
     @FXML
     private TableView<Movie> _tableOne = new TableView<Movie>();
 
+    @FXML  private void initialize() {
+    // Initialize the movie table with the two columns.
+    _title.setCellValueFactory(cellData -> cellData.getValue().getTitle());  //should put it on the vue but nothing appear
+    _kind.setCellValueFactory(cellData -> cellData.getValue().getCategory());
+}
     @FXML
     private void handlePlus() {
         Stage stage = new Stage();
