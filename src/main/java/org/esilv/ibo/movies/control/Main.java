@@ -30,7 +30,7 @@ public class Main extends Application {
 
     private static Control control;
 
-    private final ObservableList<Movie> data = FXCollections.observableArrayList();
+    private final ObservableList<Movie> data = FXCollections.observableArrayList(new Movie("ok","ko"));
 
     public static void main(String[] args)
     {
@@ -47,7 +47,7 @@ public class Main extends Application {
         List<Movie> mov = new ArrayList<Movie>(); //movie LIST
         try
         {
-            if(mov.size() != 0)
+            //if(mov.size() != 0)
             {
                 _title.setCellValueFactory(new PropertyValueFactory<Movie, String>("title")); //doesn't work
                 _kind.setCellValueFactory(new PropertyValueFactory<Movie, String>("category")); //doesn't work
