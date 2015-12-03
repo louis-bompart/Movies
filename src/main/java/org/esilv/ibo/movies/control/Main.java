@@ -30,6 +30,7 @@ public class Main extends Application {
 
     private static Control control;
 
+    private final ObservableList<Movie> data = FXCollections.observableArrayList();
 
     public static void main(String[] args)
     {
@@ -50,8 +51,13 @@ public class Main extends Application {
             {
                 _title.setCellValueFactory(new PropertyValueFactory<Movie, String>("title")); //doesn't work
                 _kind.setCellValueFactory(new PropertyValueFactory<Movie, String>("category")); //doesn't work
+                /*
+                _tableOne.setItems(data);
+                _tableOne.getColumns().addAll(_title,_kind);
+                */
             }
         }
+
         catch (Exception  e)
         {
             e.printStackTrace();
@@ -60,6 +66,15 @@ public class Main extends Application {
         primaryStage.show();
         control = new Control();
     }
+
+    @FXML
+    private javafx.scene.control.TableColumn<Movie, String> _title;
+
+    @FXML
+    private javafx.scene.control.TableColumn<Movie, String> _kind;
+
+    @FXML
+    private TableView<Movie> _tableOne = new TableView<Movie>();
 
     @FXML
     private void handlePlus() {
@@ -73,12 +88,6 @@ public class Main extends Application {
         boolean test = deleteConfirm.doDelete();
         DeleteConfirm deleteConfirm1 = new DeleteConfirm();
     }
-
-    @FXML
-    private javafx.scene.control.TableColumn<Movie, String> _title;
-
-    @FXML
-    private javafx.scene.control.TableColumn<Movie, String> _kind;
 
 
 

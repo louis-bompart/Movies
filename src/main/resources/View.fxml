@@ -18,7 +18,7 @@
             <Separator orientation="VERTICAL" prefHeight="183.0" prefWidth="49.0"/>
         </children>
     </HBox>
-    <TableView fx:id="tableOne" prefHeight="200.0" prefWidth="200.0 " tableMenuButtonVisible="true">
+    <TableView fx:id="_tableOne" prefHeight="200.0" prefWidth="200.0 " tableMenuButtonVisible="true">
         <columns>
             <TableColumn fx:id="_title" prefWidth="350.0" text="Title"/>
             <TableColumn fx:id="_kind" prefWidth="350.0" text="Kind"/>
