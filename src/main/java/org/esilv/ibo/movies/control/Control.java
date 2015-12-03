@@ -28,7 +28,7 @@ public class Control {
         movies = new Movies();
     }
 
-    public void addMovie(String title, String category)
+        public void addMovie(String title, String category)
     {
 
         Movie movie = new Movie(title, category);
@@ -71,7 +71,7 @@ public class Control {
         List<String> str = new ArrayList<String>();
         Collection<Movie> movieCollection = movies.getMovies();
         for (Movie movie: movieCollection) {
-            str.add(movie.getTitle());
+          //  str.add(movie.getTitle()); //not working i don't know why
         }
         return str;
     }

@@ -1,6 +1,7 @@
 package org.esilv.ibo.movies.model;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 public class Movie {
 
@@ -12,16 +13,16 @@ public class Movie {
         this.category = new SimpleStringProperty(Ccategory);
     }
 
-    public String getTitle() {
-        return title.get();
+    public StringProperty getTitle() {
+        return title;
     }
 
     public void setTitle(String Ttitle) {
         this.title.set(Ttitle);
     }
 
-    public String getCategory() {
-        return category.get();
+    public StringProperty getCategory() {
+        return category;
     }
 
     public void setCategory(String Ccategory) {

@@ -19,7 +19,6 @@ import org.esilv.ibo.movies.view.DeleteConfirm;
 
 import javax.swing.table.TableColumn;
 import javax.swing.text.html.ListView;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +30,7 @@ public class Main extends Application {
 
     private static Control control;
 
-    List<Movie> mov = new ArrayList<Movie>(); //movie LIST
-
-    private final ObservableList<Movie> data = FXCollections.observableArrayList(mov);
+    private final ObservableList<Movie> data = FXCollections.observableArrayList(new Movie("ok","ko"));
 
     public static void main(String[] args)
     {
@@ -47,7 +44,24 @@ public class Main extends Application {
         primaryStage.setTitle("Main Form");
         primaryStage.setScene(new Scene(root, 700, 475));
 
-        //root();
+        List<Movie> mov = new ArrayList<Movie>(); //movie LIST
+        try
+        {
+            //if(mov.size() != 0)
+            {
+                _title.setCellValueFactory(new PropertyValueFactory<Movie, String>("title")); //doesn't work
+                _kind.setCellValueFactory(new PropertyValueFactory<Movie, String>("category")); //doesn't work
+                /*
+                _tableOne.setItems(data);
+                _tableOne.getColumns().addAll(_title,_kind);
+                */
+            }
+        }
+
+        catch (Exception  e)
+        {
+            e.printStackTrace();
+        }
 
         primaryStage.show();
         control = new Control();
@@ -61,31 +75,6 @@ public class Main extends Application {
 
     @FXML
     private TableView<Movie> _tableOne = new TableView<Movie>();
-
-    @FXML
-    public void handleLoad()
-    {
-        Movie m = new Movie("ok","ok");
-
-        try
-        {
-            //if(mov.size() != 0)
-            {
-                _title.setCellValueFactory(new PropertyValueFactory<Movie, String>("title")); //doesn't work
-                _kind.setCellValueFactory(new PropertyValueFactory<Movie, String>("category")); //doesn't work
-                _tableOne.setItems(data);
-                _tableOne.setVisible(true);
-
-                //_tableOne.getColumns().addAll(_title,_kind);
-
-            }
-        }
-
-        catch (Exception  e)
-        {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     private void handlePlus() {
