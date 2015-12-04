@@ -15,6 +15,7 @@ import org.esilv.ibo.movies.model.Movie;
 import org.esilv.ibo.movies.model.Movies;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 public class MainApp extends Application {
@@ -49,8 +50,10 @@ public class MainApp extends Application {
         return movies;
     }
 
-    public void initRootLayout() {
-        try {
+    public void initRootLayout()
+    {
+        try
+        {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/View/RootLayout.fxml"));
@@ -60,7 +63,8 @@ public class MainApp extends Application {
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -86,9 +90,10 @@ public class MainApp extends Application {
     public void update()
     {
         movieData.clear();
-        for(Movie mov: movies.getMovies())
+        Iterator<Movie> movieIterator = movies.getMovies();
+        for(;movieIterator.hasNext();)
         {
-            movieData.add(mov);
+            movieData.add(movieIterator.next());
         }
     }
 }

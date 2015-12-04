@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.esilv.ibo.movies.MainApp;
+import org.esilv.ibo.movies.model.Movie;
 import org.esilv.ibo.movies.model.Movies;
 
 public class Add extends Application {
@@ -66,7 +67,7 @@ public class Add extends Application {
             public void handle(ActionEvent event)
             {
                 //TODO Add controller function to handle the button.
-                movies.addMovie(movieTextField.getText(), categoryTextField.getText());
+                movies.AddMovie(new Movie(movieTextField.getText(), categoryTextField.getText()));
                 primaryStage.close();
                 mainApp.update();
             }

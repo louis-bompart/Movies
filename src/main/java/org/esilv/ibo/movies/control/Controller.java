@@ -1,6 +1,7 @@
 package org.esilv.ibo.movies.control;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import org.esilv.ibo.movies.MainApp;
@@ -9,6 +10,7 @@ import org.esilv.ibo.movies.model.Movies;
 import org.esilv.ibo.movies.view.Add;
 import org.esilv.ibo.movies.view.DeleteConfirm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +19,11 @@ import java.util.List;
 public class Controller {
 
     private Movies movies;
+
+    List<Movie> ListMovie;
+
+    private Movie movie;
+
     @FXML
     private TableView<Movie> _tableOne;
     @FXML
@@ -27,12 +34,15 @@ public class Controller {
     private javafx.scene.control.Label labelone;
 
     private MainApp mainApp;
+
     @FXML
-    private void initialize() {
+    private void initialize()
+    {
         // Initialize the person table with the two columns.
         _title.setCellValueFactory(cellData -> cellData.getValue().getTitle());
         _category.setCellValueFactory(cellData -> cellData.getValue().getCategory());
     }
+
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         movies = mainApp.getMovies();
@@ -46,10 +56,25 @@ public class Controller {
         add.start(stage);
     }
     @FXML
-    private void handleMinus() {
+    private void handleMinus()
+    {
         DeleteConfirm deleteConfirm = new DeleteConfirm();
         boolean test = deleteConfirm.doDelete();
-        DeleteConfirm deleteConfirm1 = new DeleteConfirm();
+        if( test = true)
+        {
+            int SelectedIndex = _tableOne.getSelectionModel().getSelectedIndex();
+            _tableOne.getItems().remove(SelectedIndex);
+
+            String t =  _title.getColumns().get(SelectedIndex).getText().toString();
+            String c =  _category.getColumns().get(SelectedIndex).getText().toString();
+
+            Movie m = new Movie(t,c);
+
+            //Lorsqu'on selectionne une ligne, on doit etre en mesure de selectionner en même temps les colonnes
+            movies.RmMovie(m);
+            //movies.removeMovie(ListMovie.get(SelectedIndex));
+        }
+
     }
 
 }
