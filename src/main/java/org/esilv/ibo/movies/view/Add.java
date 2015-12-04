@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.esilv.ibo.movies.control.Control;
+import org.esilv.ibo.movies.MainApp;
 import org.esilv.ibo.movies.model.Movies;
 
 public class Add extends Application {
@@ -22,10 +22,12 @@ public class Add extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    private Control control;
-    public Add(Control oControl)
+    private Movies movies;
+    private MainApp mainApp;
+    public Add(Movies oMovies, MainApp omainApp)
     {
-        control = oControl;
+        movies = oMovies;
+        mainApp = omainApp;
     }
 
     @Override
@@ -64,8 +66,9 @@ public class Add extends Application {
             public void handle(ActionEvent event)
             {
                 //TODO Add controller function to handle the button.
-                control.addMovie(movieTextField.getText(), categoryTextField.getText());
+                movies.addMovie(movieTextField.getText(), categoryTextField.getText());
                 primaryStage.close();
+                mainApp.update();
             }
         });
         grid.add(btn, 1, 3);

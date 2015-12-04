@@ -1,5 +1,7 @@
 package org.esilv.ibo.movies.model;
 
+import org.esilv.ibo.movies.view.AlertTemplate;
+
 import java.io.FileWriter;
 import java.io.IOError;
 import java.io.IOException;
@@ -36,10 +38,95 @@ public class Movies
         return true;
     }
 
-    //A collection can be used easily with iterator (like in C++)
-    public Collection<Movie> getMovies()
+    public void addMovie(String title, String category)
     {
-        return hashMap.values();
+
+        Movie movie = new Movie(title, category);
+
+        if(AddMovie(movie))
+        {
+            String[] alert = {"Success","Your movie has been added"};
+            AlertTemplate alertTemplate = new AlertTemplate(alert);
+            alertTemplate.showAlert();
+            //WriteCSV();
+        }
+        else
+        {
+            String[] alert = {"Failure","Your movie exists already"};
+            AlertTemplate alertTemplate = new AlertTemplate(alert);
+            alertTemplate.showAlert();
+        }
+
     }
+
+    public void removeMovie(Movie movie)
+    {
+
+        if(RmMovie(movie.hashCode()))
+        {
+            String[] alert = {"Success","Your movie has been deleted"};
+            AlertTemplate alertTemplate = new AlertTemplate(alert);
+            alertTemplate.showAlert();
+        }
+        else
+        {
+            String[] alert = {"Failure","Your movie doesn't exist in our database"};
+            AlertTemplate alertTemplate = new AlertTemplate(alert);
+            alertTemplate.showAlert();
+        }
+    }
+
+    public List<String> getTitle()
+    {
+        List<String> str = new ArrayList<String>();
+        Collection<Movie> movieCollection = hashMap.values();
+        for (Movie movie: movieCollection) {
+            str.add(movie.getTitle());
+        }
+        return str;
+    }
+
+    public List<Movie> getMovies()
+    {
+        List<Movie> movieList = new ArrayList<Movie>();
+        Collection<Movie> movieCollection = hashMap.values();
+        for (Movie movie: movieCollection) {
+            movieList.add(movie);
+        }
+        return movieList;
+    }
+
+    public void WriteCSV()
+    {
+        String path = "movies.csv";  //path store
+
+        try
+        {
+            FileWriter writer;  //Function to write
+
+            writer = new FileWriter(path, true);  //take path
+
+            List<Movie> mov = getMovies();
+
+            for(Movie m : mov) //foreach
+            {
+                writer.write(m.getTitle().toString());
+                writer.write(";"); //CSV separator
+                writer.write(m.getCategory().toString());
+                writer.write("\r\n");
+            }
+
+            System.out.println("Write success!");
+
+            writer.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+
+    }
+
 }
 
