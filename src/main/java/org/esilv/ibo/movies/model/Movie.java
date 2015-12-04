@@ -1,39 +1,39 @@
 package org.esilv.ibo.movies.model;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 public class Movie {
 
-    private SimpleStringProperty title;
-    private SimpleStringProperty category;
+    private String title;
+    private String category;
 
-    public Movie(String Ttitle, String Ccategory) {
-        this.title = new SimpleStringProperty(Ttitle);
-        this.category = new SimpleStringProperty(Ccategory);
+    public Movie(String title, String category) {
+        this.title = title;
+        this.category = category;
     }
 
-    public StringProperty getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String Ttitle) {
-        this.title.set(Ttitle);
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public StringProperty getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(String Ccategory) {
-        this.category.set(Ccategory);
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public StringProperty titleProperty() {
-        return title;
+    @Override
+    public boolean equals(Object obj) {
+        return (title == ((Movie) obj).getTitle() && category == ((Movie) obj).getCategory());
     }
 
-    public StringProperty catProperty() {
-        return category;
+    @Override
+    public int hashCode() {
+        return title.hashCode() + category.hashCode();
     }
 }
