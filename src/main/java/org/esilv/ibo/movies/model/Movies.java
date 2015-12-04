@@ -81,7 +81,7 @@ public class Movies
         List<String> str = new ArrayList<String>();
         Collection<Movie> movieCollection = hashMap.values();
         for (Movie movie: movieCollection) {
-            str.add(movie.getTitle());
+            str.add(movie.getTitle().toString());
         }
         return str;
     }
