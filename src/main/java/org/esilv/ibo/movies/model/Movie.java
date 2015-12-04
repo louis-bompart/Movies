@@ -28,4 +28,12 @@ public class Movie {
     public void setCategory(String Ccategory) {
         this.category.set(Ccategory);
     }
+
+    public StringProperty titleProperty() {
+        return title;
+    }
+
+    public StringProperty catProperty() {
+        return category;
+    }
 }
