@@ -1,12 +1,10 @@
 package org.esilv.ibo.movies.view;
 
-import static org.junit.Assert.*;
-
 /**
  * Movies
  * Created by louis on 24/11/2015.
  */
-public class MainTest
+class MainTest
 {
     public static void main(String[] args)
     {

@@ -1,4 +1,4 @@
-package org.esilv.ibo.movies;/**
+package org.esilv.ibo.movies; /**
  * Created by Mcas on 03/12/2015.
  */
 
@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -15,15 +16,25 @@ import org.esilv.ibo.movies.model.Movie;
 import org.esilv.ibo.movies.model.Movies;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MainApp extends Application {
 
-    private Movies movies;
-    private ObservableList<Movie> movieData = FXCollections.observableArrayList();
+    private final Movies movies;
+    private final ObservableList<Movie> movieDataTab;
+    private final ObservableList<PieChart.Data> movieDataChart;
     private Stage primaryStage;
     private BorderPane rootLayout;
+
+    public MainApp() {
+        movies = new Movies();
+        movieDataTab = FXCollections.observableArrayList();
+        movieDataChart = FXCollections.observableArrayList();
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -36,13 +47,12 @@ public class MainApp extends Application {
         showMovieOverview();
     }
 
-    public MainApp(){
-        movies = new Movies();
+    public ObservableList<PieChart.Data> getMovieDataChart() {
+        return movieDataChart;
     }
 
-
-    public ObservableList<Movie> getMovieData() {
-        return movieData;
+    public ObservableList<Movie> getMovieDataTab() {
+        return movieDataTab;
     }
 
     public Movies getMovies()
@@ -50,14 +60,14 @@ public class MainApp extends Application {
         return movies;
     }
 
-    public void initRootLayout()
+    private void initRootLayout()
     {
         try
         {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/View/RootLayout.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            rootLayout = loader.load();
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
@@ -69,11 +79,11 @@ public class MainApp extends Application {
         }
     }
 
-    public void showMovieOverview(){
+    private void showMovieOverview() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/View/View.fxml"));
-            VBox movieOverview = (VBox) loader.load();
+            VBox movieOverview = loader.load();
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(movieOverview);
@@ -89,11 +99,20 @@ public class MainApp extends Application {
 
     public void update()
     {
-        movieData.clear();
+        movieDataTab.clear();
+        movieDataChart.clear();
         Iterator<Movie> movieIterator = movies.getMovies();
+        Map<String, Integer> categories = new HashMap<>();
         for(;movieIterator.hasNext();)
         {
-            movieData.add(movieIterator.next());
+            Movie movie = movieIterator.next();
+            movieDataTab.add(movie);
+            if (categories.containsKey(movie.getCategory())) {
+                categories.replace(movie.getCategory(), categories.get(movie.getCategory()) + 1);
+            } else {
+                categories.put(movie.getCategory(), 1);
+            }
         }
+        movieDataChart.addAll(categories.keySet().stream().map(key -> new PieChart.Data(key, categories.get(key))).collect(Collectors.toList()));
     }
 }

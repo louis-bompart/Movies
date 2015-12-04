@@ -1,6 +1,5 @@
 package org.esilv.ibo.movies.model;
 
-
 public class Movie {
 
     private String title;
@@ -29,7 +28,8 @@ public class Movie {
 
     @Override
     public boolean equals(Object obj) {
-        return (title == ((Movie) obj).getTitle() && category == ((Movie) obj).getCategory());
+        final Movie other = (Movie) obj;
+        return (title.equals(other.title) && category.equals(other.category));
     }
 
     @Override

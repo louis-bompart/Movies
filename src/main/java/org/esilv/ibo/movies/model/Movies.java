@@ -9,29 +9,24 @@ import java.util.Set;
  */
 public class Movies
 {
-    Set<Movie> movieSet;
+    private final Set<Movie> movieSet;
 
     public Movies() {
-        movieSet = new HashSet<Movie>();
+        movieSet = new HashSet<>();
     }
 
-    public boolean AddMovie(Movie movie)
+    public void AddMovie(Movie movie)
     {
-
         if (!movieSet.contains(movie)) {
             movieSet.add(movie);
-            return true;
         }
 
-        return false;
     }
 
-    public boolean RmMovie(Movie movie) {
+    public void RmMovie(Movie movie) {
         if (movieSet.contains(movie)) {
             movieSet.remove(movie);
-            return true;
         }
-        return false;
     }
 
     public Iterator<Movie> getMovies()

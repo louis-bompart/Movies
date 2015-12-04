@@ -5,21 +5,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
+      minWidth="-Infinity" prefHeight="1000.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8"
       fx:controller="org.esilv.ibo.movies.control.Controller">
     <HBox>
-        <children>
-            <Separator orientation="VERTICAL" prefHeight="189.0" prefWidth="62.0"/>
-            <Label fx:id="labelone" prefHeight="164.0" prefWidth="120.0" text="Label"/>
-            <Separator orientation="VERTICAL" prefHeight="183.0" prefWidth="121.0"/>
-            <PieChart fx:id="pieChartOne" legendSide="RIGHT" prefHeight="150.0" prefWidth="192.0"
-                      title="PieChar date..."/>
-            <Separator orientation="VERTICAL" prefHeight="183.0" prefWidth="49.0"/>
-        </children>
+        <PieChart fx:id="pieChartOne" legendSide="RIGHT" prefHeight="600.0" prefWidth="600.0"
+                  title="Movies by Categories"/>
     </HBox>
-    <TableView fx:id="_tableOne" prefHeight="200.0" prefWidth="200.0 " tableMenuButtonVisible="true">
+    <TableView fx:id="_tableOne" prefHeight="400.0" prefWidth="600.0 " tableMenuButtonVisible="true">
         <columns>
             <TableColumn fx:id="_title" prefWidth="350.0" text="Title"/>
             <TableColumn fx:id="_category" prefWidth="350.0" text="Category"/>

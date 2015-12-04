@@ -1,7 +1,7 @@
 package org.esilv.ibo.movies.control;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import org.esilv.ibo.movies.MainApp;
@@ -10,19 +10,12 @@ import org.esilv.ibo.movies.model.Movies;
 import org.esilv.ibo.movies.view.Add;
 import org.esilv.ibo.movies.view.DeleteConfirm;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Mcas on 03/12/2015.
  */
 public class Controller {
 
     private Movies movies;
-
-    List<Movie> ListMovie;
-
-    private Movie movie;
 
     @FXML
     private TableView<Movie> _tableOne;
@@ -31,7 +24,7 @@ public class Controller {
     @FXML
     private javafx.scene.control.TableColumn<Movie, String> _category;
     @FXML
-    private javafx.scene.control.Label labelone;
+    private javafx.scene.chart.PieChart pieChartOne;
 
     private MainApp mainApp;
 
@@ -39,20 +32,20 @@ public class Controller {
     private void initialize()
     {
         // Initialize the person table with the two columns.
-        _title.setCellValueFactory(cellData -> cellData.getValue().getTitle());
-        _category.setCellValueFactory(cellData -> cellData.getValue().getCategory());
+        _title.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getTitle()));
+        _category.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCategory()));
     }
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
         movies = mainApp.getMovies();
-        _tableOne.setItems(mainApp.getMovieData());
-
+        _tableOne.setItems(mainApp.getMovieDataTab());
+        pieChartOne.setData(mainApp.getMovieDataChart());
     }
     @FXML
     private void handlePlus() {
         Stage stage = new Stage();
-        Add add = new Add(movies,mainApp);
+        Add add = new Add(this);
         add.start(stage);
     }
     @FXML
@@ -60,21 +53,24 @@ public class Controller {
     {
         DeleteConfirm deleteConfirm = new DeleteConfirm();
         boolean test = deleteConfirm.doDelete();
-        if( test = true)
+        if (test)
         {
-            int SelectedIndex = _tableOne.getSelectionModel().getSelectedIndex();
-            _tableOne.getItems().remove(SelectedIndex);
-
-            String t =  _title.getColumns().get(SelectedIndex).getText().toString();
-            String c =  _category.getColumns().get(SelectedIndex).getText().toString();
-
-            Movie m = new Movie(t,c);
-
-            //Lorsqu'on selectionne une ligne, on doit etre en mesure de selectionner en même temps les colonnes
-            movies.RmMovie(m);
-            //movies.removeMovie(ListMovie.get(SelectedIndex));
+            Movie movie = _tableOne.getSelectionModel().getSelectedItem();
+            if (movie != null) {
+                RmMovie(movie);
+            }
         }
-
     }
 
+    public void AddMovie(Movie movie) {
+        movies.AddMovie(movie);
+        mainApp.update();
+    }
+
+    private void RmMovie(Movie movie) {
+        if (movie != null) {
+            movies.RmMovie(movie);
+            mainApp.update();
+        }
+    }
 }

@@ -4,8 +4,6 @@ package org.esilv.ibo.movies.view;
  */
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,35 +12,34 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import org.esilv.ibo.movies.MainApp;
+import org.esilv.ibo.movies.control.Controller;
 import org.esilv.ibo.movies.model.Movie;
-import org.esilv.ibo.movies.model.Movies;
 
 public class Add extends Application {
+
+    private final Controller controller;
+    private TextField movieTextField;
+    private TextField categoryTextField;
+
+    public Add(Controller controller) {
+        this.controller = controller;
+    }
 
     public static void main(String[] args) {
         launch(args);
     }
-    private Movies movies;
-    private MainApp mainApp;
-    public Add(Movies oMovies, MainApp omainApp)
-    {
-        movies = oMovies;
-        mainApp = omainApp;
-    }
 
     @Override
-    public void start(final Stage primaryStage)
-    {
+    public void start(final Stage primaryStage) {
         primaryStage.setTitle("Add a movie");
 
         //Grid panel
-        GridPane grid  = new GridPane();
+        GridPane grid = new GridPane();
 
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(5); //horizontal
         grid.setVgap(5); //vertical
-        grid.setPadding(new Insets(25,25,25,25));
+        grid.setPadding(new Insets(25, 25, 25, 25));
 
         //Scene scene = new Scene(grid, 5, 5);
         primaryStage.setScene(new Scene(grid, 500, 250));
@@ -50,30 +47,23 @@ public class Add extends Application {
         //Movie
         final Label movieLabel = new Label("Movie :");
         grid.add(movieLabel, 0, 0);
-        final TextField movieTextField = new TextField();
+        movieTextField = new TextField();
         grid.add(movieTextField, 1, 0);
 
         //Category
         final Label categoryLabel = new Label("Category :");
         grid.add(categoryLabel, 0, 1);
-        final TextField categoryTextField = new TextField();
+        categoryTextField = new TextField();
         grid.add(categoryTextField, 1, 1);
 
         //Button
         Button btn = new Button();
         btn.setText("Add");
-        btn.setOnAction(new EventHandler<ActionEvent>()
-        {
-            public void handle(ActionEvent event)
-            {
-                //TODO Add controller function to handle the button.
-                movies.AddMovie(new Movie(movieTextField.getText(), categoryTextField.getText()));
-                primaryStage.close();
-                mainApp.update();
-            }
+        btn.setOnAction(event -> {
+            controller.AddMovie(new Movie(movieTextField.getText(), categoryTextField.getText()));
+            primaryStage.close();
         });
         grid.add(btn, 1, 3);
-
         primaryStage.show();
     }
 }
